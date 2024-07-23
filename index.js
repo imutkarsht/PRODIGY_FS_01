@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 
 const noteRoutes = require('./routes/noteRoutes')
 const userRoutes = require('./routes/userRoutes')
-const { restrictToLoggedInUserOnly } = require('./middlewares/auth')
+const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth')
 
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')));
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 
-app.use('/user', userRoutes)
+app.use('/user', checkAuth, userRoutes)
 app.use('/note', restrictToLoggedInUserOnly, noteRoutes)
 
 app.get('/signup', (req, res) => {

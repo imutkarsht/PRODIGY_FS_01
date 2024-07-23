@@ -2,8 +2,8 @@ const note = require('../models/note')
 
 const handleReadNotes = async (req,res) => {
     try {
-        const notes = await note.find({})
-        console.log('request fetched');
+        if(!req.user) return res.redirect('/login')
+        const notes = await note.find({ createdBy: req.user._id })
         res.render('home', {notes: notes})    
     } catch (err) {
         res.status(404).json({ err: 'Invalid request(not found)' });
