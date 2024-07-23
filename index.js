@@ -5,6 +5,7 @@ const app = express()
 const path = require('path')
 const cookieParser = require('cookie-parser')
 
+const staticRoutes = require('./routes/staticRoutes')
 const noteRoutes = require('./routes/noteRoutes')
 const userRoutes = require('./routes/userRoutes')
 const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth')
@@ -15,16 +16,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 
+app.use('/', staticRoutes)
 app.use('/user', checkAuth, userRoutes)
 app.use('/note', restrictToLoggedInUserOnly, noteRoutes)
 
-app.get('/signup', (req, res) => {
-    return res.render('signup')
-})
-
-app.get('/login', (req,res) => {
-    return res.render('login')
-})
 
 app.listen(process.env.PORT, () => {
     console.log(`Server has started running`);
