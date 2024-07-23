@@ -12,11 +12,16 @@ const handleReadNotes = async (req,res) => {
 
 const handleCreateNote = async (req, res) => {
     try {
-        const data = req.body;
-        const newNote = new note(data);
-        await newNote.save();
-        console.log('Data saved');
-        res.redirect('/');
+        const createdBy = req.user._id
+        const { title, content } = req.body;
+        const newNote = await note.create({
+            title,
+            content,
+            createdBy
+        })
+
+        console.log(newNote);
+        res.redirect('/note');
 
     } catch (err) {
         console.log(err);
@@ -34,7 +39,7 @@ const handleDeleteNote =  async (req, res) => {
         }
 
         console.log('Deleted successfully');
-        res.redirect('/');
+        res.redirect('/note');
     } catch (err) {
         console.error('Error deleting note:', err);
         res.status(500).json({ error: 'Internal server error' });
@@ -60,8 +65,12 @@ const handleUpdateNoteInDb = async (req, res) => {
         const id = req.params.id
         const updatedData = req.body
         const data = await note.findByIdAndUpdate(id, updatedData)
-        console.log('request fetched');
-        res.redirect('/')
+        if(data){
+            console.log('request fetched');
+            res.redirect('/note')
+        }
+        else
+            res.send('failed to update')
            
     } catch (err) {
         res.status(404).json({ err: 'Invalid request(not found)' });

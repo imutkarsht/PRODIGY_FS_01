@@ -9,8 +9,12 @@ const noteSchema = new mongoose.Schema({
     content:{
         required: true,
         type: String,
+    },
+    
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
     }
-
 }, { timestamps: true } )
 
 const note = mongoose.model('note', noteSchema)
