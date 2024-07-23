@@ -1,7 +1,7 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
-const { MONGO_URL } = require('../utils/constants')
 
-mongoose.connect(MONGO_URL)
+mongoose.connect(process.env.MONGO_URL)
 const db = mongoose.connection
 
 db.on('error', (err) => {

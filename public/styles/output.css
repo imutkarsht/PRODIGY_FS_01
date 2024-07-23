@@ -1058,3 +1058,9 @@ video {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
 }
+
+@media (min-width: 1024px) {
+  .lg\:min-w-\[30vw\] {
+    min-width: 30vw;
+  }
+}

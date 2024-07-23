@@ -1,5 +1,5 @@
+require('dotenv').config()
 const express = require('express')
-const { PORT_NO } = require('./utils/constants')
 const db = require('./config/db')
 const app = express()
 const path = require('path')
@@ -26,6 +26,6 @@ app.get('/login', (req,res) => {
     return res.render('login')
 })
 
-app.listen(PORT_NO, () => {
-    console.log(`Server has started running on port ${PORT_NO}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server has started running`);
 })
