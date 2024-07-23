@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="../styles/output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="min-h-screen flex flex-col">
+    <nav class="bg-yellow-500 text-3xl text-white font-semibold py-3 px-3">Note Keep</nav>
+    <form action="/edit/<%= note._id %>" method="post" class="flex flex-col mt-2 self-center bg-zinc-100 p-6 rounded-lg shadow-md max-w-md w-full">
+        
+        <input 
+            type="text" 
+            id="title" 
+            name="title"
+            placeholder="Title"
+            value="<%= note.title %>"
+            class="p-3 bg-zinc-100  rounded-md mb-1 outline-none focus:ring-2 focus:ring-yellow-500 text-zinc-900 placeholder:text-zinc-500"
+            required
+        >
+
+
+        <textarea
+            id="content"
+            name="content"
+            placeholder="Content of the note" 
+            class="p-3 bg-zinc-100 rounded-md mb-2 outline-none focus:ring-2 focus:ring-yellow-500 text-zinc-900 placeholder:text-zinc-500 h-auto resize-none"
+            required
+        >
+        <%= note.content %>
+    </textarea>
+
+        <button type="submit" class="bg-yellow-500 text-white font-semibold p-3 rounded-md text-lg hover:bg-yellow-600 transition duration-300 ease-in-out">Update</button>
+    </form>
+    <footer class="bg-zinc-200 text-zinc-950 text-xl w-full flex items-center justify-center mt-auto py-2">
+        Created by Utkarsh Tiwari
+    </footer>
+</body>
+</html>
