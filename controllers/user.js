@@ -1,5 +1,4 @@
 const user = require("../models/user")
-const { v4: uuidv4 } = require('uuid')
 const { setUser } = require("../service/auth")
 
 const handleUserSignup = async (req, res) => {
@@ -21,19 +20,22 @@ const handleUserLogin = async (req, res) => {
     const isUser = await user.findOne({ email, password })
 
     if(!isUser){
-        console.log('invalid username or password')
         return res.render('login', {
             error: 'Invalid username or password'
         })
     }
-    const sessionId = uuidv4()
-    setUser(sessionId, isUser)  // Use isUser instead of user
-    res.cookie('uid',sessionId)
+    const token = setUser(isUser)  
+    res.cookie('uid', token)
     console.log('login successful');
     return res.redirect('/note')
 }
 
+const handleUserLogout = (req, res) => {
+    res.clearCookie('uid', { path: '/' });
+    res.redirect('/')
+  }
 module.exports = {
     handleUserSignup,
-    handleUserLogin
+    handleUserLogin,
+    handleUserLogout
 }
