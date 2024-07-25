@@ -22,9 +22,7 @@ const handleUserLogin = async (req, res) => {
     const isUser = await user.findOne({ email, password })
 
     if(!isUser){
-        return res.render('login', {
-            error: 'Invalid username or password'
-        })
+        return res.redirect('/login?message=invalid%20username%20or%20password')
     }
     const token = setUser(isUser)  
     res.cookie('uid', token)

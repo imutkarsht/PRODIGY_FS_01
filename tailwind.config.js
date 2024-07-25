@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./views/**/*.{html,js,ejs}"],
+  safelist: [
+    'animate-pulse',
+    'text-red-500',
+  ],
     darkMode: 'class',
       theme: {
           extend: {
