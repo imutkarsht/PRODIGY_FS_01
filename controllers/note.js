@@ -20,11 +20,9 @@ const handleCreateNote = async (req, res) => {
             createdBy
         })
 
-        console.log(newNote);
-        res.redirect('/note');
+        res.redirect('/note?message=Note%20created');
 
     } catch (err) {
-        console.log(err);
         res.status(500).json({ error: 'Internal server Error' });
     }
 }
@@ -38,10 +36,8 @@ const handleDeleteNote =  async (req, res) => {
             return res.status(404).json({ error: 'Note not found' });
         }
 
-        console.log('Deleted successfully');
-        res.redirect('/note');
+        res.redirect('/note?message=Note%20deleted');
     } catch (err) {
-        console.error('Error deleting note:', err);
         res.status(500).json({ error: 'Internal server error' });
     }
 }
@@ -53,7 +49,6 @@ const handleUpdateNote = async (req, res) => {
         if(!data){
             return res.status(404).json({ err: 'Note not Found' })
         }
-        console.log('fetched Succesfully')
         res.render('edit', {note: data})
     } catch (err) {
         res.status(404).json({ err: 'Invalid request(not found)' });
@@ -67,7 +62,7 @@ const handleUpdateNoteInDb = async (req, res) => {
         const data = await note.findByIdAndUpdate(id, updatedData)
         if(data){
             console.log('request fetched');
-            res.redirect('/note')
+            res.redirect('/note?message=Note%20updated')
         }
         else
             res.send('failed to update')

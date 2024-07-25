@@ -8,21 +8,24 @@
 </head>
 <body class="min-h-screen font-custom flex flex-col">
     <nav class="bg-blue-500 text-3xl text-white font-semibold py-3 px-3 shadow-md shadow-zinc-400"><a href="/">Note Keep</a></nav>
-    <div class="flex flex-col gap-3 bg-zinc-100 shadow-md shadow-zinc-300 mt-[10vh] p-4 rounded-md min-w-[30vw] self-center">
-        <h2 class="text-2xl text-zinc-500 font-semibold self-center ">Login to Note Keep</h2>
+    <div class="flex flex-col gap-3 bg-zinc-100 shadow-md dark:bg-zinc-900 shadow-zinc-300  dark:shadow-zinc-700 mt-[10vh] p-4 rounded-md min-w-[30vw] self-center">
+        <h2 class="text-2xl text-zinc-500 dark:text-zinc-100 font-semibold self-center ">Login to Note Keep</h2>
         <div class="h-0.5 rounded-lg w-full bg-blue-500 my-1"></div>
         <form action="/user/login" class="flex flex-col gap-3" method="post">
            
-            <input type="email" class="p-3 bg-zinc-100  rounded-md mb-3  text-zinc-900 placeholder:text-zinc-500" name="email" id="email" placeholder="Email">
-            <input type="password" name="password" id="password" placeholder="Password" class="p-3 bg-zinc-100  rounded-md mb-3  text-zinc-900 placeholder:text-zinc-500">
+            <input type="email" class="p-3 bg-zinc-100 dark:bg-zinc-900  rounded-md mb-3 dark:text-zinc-50  text-zinc-900 placeholder:text-zinc-500" name="email" id="email" placeholder="Email">
+            <input type="password" name="password" id="password" placeholder="Password" class="p-3 bg-zinc-100  rounded-md mb-3  text-zinc-900 placeholder:text-zinc-500 dark:bg-zinc-900 dark:text-zinc-50 ">
             <button class="bg-blue-500 text-white font-semibold p-3 rounded-md text-lg hover:bg-blue-600 transition duration-300"  type="submit">log in</button>
+           
         </form>
-
+        <p id="message" class="text-green-500 "></p>
         <p class="self-center text-base text-zinc-500 font-semibold">Not a user? <a href="/signup" class="text-blue-400">sign in</a></p>
 
     </div>
-    <footer class="bg-zinc-200 text-zinc-950 text-xl w-full flex items-center justify-center mt-auto py-2">
+    <footer class="bg-zinc-200 dark:bg-zinc-800 dark:text-white text-zinc-950 text-xl w-full flex items-center justify-center mt-auto py-2">
         Created by Utkarsh Tiwari
     </footer>
+
+    <script src="scripts/handleLoginMessages.js"></script>
 </body>
 </html>

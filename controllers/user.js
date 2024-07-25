@@ -8,10 +8,12 @@ const handleUserSignup = async (req, res) => {
         email,
         password
     })
-    if(!newUser) console.log('failed to create user')
+    if(!newUser) res.send({
+        message: "failed to create new user",
+        status: 0
+    })
     else{
-        console.log('user created');
-        return res.redirect('/note')
+        return res.redirect('/login?message=account%20created%20login%20now');
     }
 }
 
@@ -26,13 +28,12 @@ const handleUserLogin = async (req, res) => {
     }
     const token = setUser(isUser)  
     res.cookie('uid', token)
-    console.log('login successful');
-    return res.redirect('/note')
+    return res.redirect('/note?message=logged%20in%20successfully')
 }
 
 const handleUserLogout = (req, res) => {
     res.clearCookie('uid', { path: '/' });
-    res.redirect('/')
+    res.redirect('/?message=log%20out%20successfully')
   }
 module.exports = {
     handleUserSignup,

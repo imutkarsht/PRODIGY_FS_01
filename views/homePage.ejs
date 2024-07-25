@@ -15,29 +15,35 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center bg-blur font-custom">
-    <nav class="bg-blue-500 self-start w-full text-3xl text-white font-semibold py-3 px-3"><a href="/">Note Keep</a></nav>
-    <div class=" container flex flex-col p-8 m-6 rounded-lg text-zinc-900 bg-zinc-100 bg-opacity-70 lg:max-w-[60vw] sm:max-w-[80vw] items-center justify-center">
-        <p class="text-xl font-semibold text-zinc-900">Note keep App Created using NodeJS, Ejs, MongoDB and tailwindcss</p>
-        <div class="h-0.5 w-full bg-blue-500 my-2"></div>
-        <div class="flex items-center justify-around gap-4">
-            <a href="/login">
-                <button class='bg-blue-500 text-white font-semibold p-3 rounded-md text-lg hover:bg-blue-400 transition duration-300'>Login</button>
-            </a>
-            <a href="/signup">
-                <button class="bg-blue-500 text-white font-semibold p-3 rounded-md text-lg hover:bg-blue-400 transition duration-300">
-                    Signup
-                </button>
-            </a>
+<body class="min-h-screen flex flex-col items-center bg-zinc-100 text-zinc-950 font-custom">
+
+    <nav class="bg-blue-500 flex justify-between self-start w-full text-3xl text-white font-semibold py-2 px-3">
+        <a href="/">Note Keep</a>
+        <ul class="flex items-center gap-4 justify-center px-2 text-base">
+            <li><a href="/login" class="px-4 py-2 bg-blue-300 hover:bg-blue-200 transition-all duration-200 ease-out text-zinc-800 rounded-md">Login</a></li>
+            <li><a href="/signup" class="px-4 py-2 bg-blue-300 hover:bg-blue-200 transition-all duration-200 ease-out text-zinc-800 rounded-md">signup</a></li>
+        </ul>
+    </nav>
+    <p id="msgbox" class="text-green-500 text-2xl mt-4 font-semibold"></p>
+    <div class=" container flex p-8 m-6 items-center flex-wrap-reverse justify-center min-w-[100vw]">
+        <div class="w-full md:w-1/2 flex gap-[2vh] flex-col p-4 text-lg text-zinc-900">
+            <p>
+                Welcome to Note Keep! This application is designed to help you manage your notes efficiently and effortlessly. Built with the MERN stack (MongoDB, Express, React, Node.js), EJS for dynamic templating, and styled with Tailwind CSS, Note Keep offers a seamless experience for creating, reading, updating, and deleting notes. Enjoy a clean, responsive interface that makes note management intuitive and visually appealing. Start organizing your thoughts with ease today!
+            </p>
             <a href="/note">
-                <button class="bg-blue-500 text-white font-semibold p-3 rounded-md text-lg hover:bg-blue-400 transition duration-300">
+                <button class="text-2xl rounded-md bg-blue-500 hover:bg-blue-400 transition-all duration-200 ease-out px-6 py-2 text-white font-semibold">
                     Go to Dashboard
                 </button>
             </a>
         </div>
+        <div class="flex md:justify-end justify-center w-full md:w-1/2">
+            <img src="../images/image.png" alt="note image" class=" object-contain md:h-128 h-80 ">
+        </div>
+
     </div>
     <footer class="text-zinc-900 bg-zinc-100 font-semibold bg-opacity-50 text-base w-full flex items-center justify-center mt-auto py-2">
         Created by &nbsp; <a href="https://imutkarsht-portfolio.vercel.app/">Utkarsh Tiwari</a>
     </footer>
+    <script src="/scripts/handleNoteMessages.js"></script>
 </body>
 </html>
