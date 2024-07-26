@@ -2,14 +2,14 @@
 module.exports = {
   content: ["./views/**/*.{html,js,ejs}"],
   safelist: [
-    'animate-pulse',
+    'animate-ping',
     'text-red-500',
   ],
     darkMode: 'class',
       theme: {
           extend: {
             height: {
-              '128': '28rem', // Example custom height
+              '128': '28rem', 
               '144': '36rem',
             },
             fontFamily: {

@@ -19,11 +19,7 @@ const handleUserSignup = async (req, res) => {
         }
         return res.redirect('/login?message=account%20created%20login%20now');
     } catch (error) {
-        console.error(error);
-        return res.status(500).send({
-            message: "Failed to create new user",
-            status: 0
-        });
+        return res.redirect('/signup?message=user%20Already%20exists%20')
     }
 };
 

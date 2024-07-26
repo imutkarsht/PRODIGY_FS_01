@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note App</title>
     <link rel="stylesheet" href="styles/output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         .bg-blur {
             background-image: url('https://static.vecteezy.com/system/resources/previews/003/428/332/non_2x/night-landscape-with-mountain-and-moonlight-vector.jpg');
@@ -15,7 +16,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center bg-zinc-100 text-zinc-950 font-custom">
+<body class="min-h-screen flex flex-col items-center dark:bg-zinc-900 dark:text-white bg-zinc-100 text-zinc-950 font-custom">
 
     <nav class="bg-blue-500 flex justify-between self-start w-full text-3xl text-white font-semibold py-2 px-3">
         <a href="/">Note Keep</a>
@@ -26,10 +27,16 @@
     </nav>
     <p id="msgbox" class="text-green-500 text-2xl mt-4 font-semibold"></p>
     <div class=" container flex p-8 m-6 items-center flex-wrap-reverse justify-center min-w-[100vw]">
-        <div class="w-full md:w-1/2 flex gap-[2vh] flex-col p-4 text-lg text-zinc-900">
+        <div class="w-full md:w-1/2 flex gap-[2vh] flex-col p-4 md:text-xl text-lg text-zinc-700 dark:text-zinc-200 font-semibold">
             <p>
-                Welcome to Note Keep! This application is designed to help you manage your notes efficiently and effortlessly. Built with the MERN stack (MongoDB, Express, React, Node.js), EJS for dynamic templating, and styled with Tailwind CSS, Note Keep offers a seamless experience for creating, reading, updating, and deleting notes. Enjoy a clean, responsive interface that makes note management intuitive and visually appealing. Start organizing your thoughts with ease today!
+                Welcome to Note Keep! Designed to help you manage your notes efficiently and effortlessly. Built with the MongoDB, Express, Node.js with EJS for dynamic templating, and styled with Tailwind CSS, Note Keep offers a seamless experience for creating, reading, updating, and deleting notes. Enjoy a clean, responsive interface that makes note management intuitive and visually appealing. Start organizing your thoughts with ease today!
+                It also features secure authorization so that your notes are only visible to you.
             </p>
+            <ul class="flex gap-2 text-5xl font-bold">
+                <li><i class='bx bxl-nodejs text-lime-600'></i></li>
+                <li><i class='bx bxl-mongodb text-green-700' ></i></li>
+                <li><i class='bx bxl-tailwind-css text-sky-500' ></i></li>
+            </ul>
             <a href="/note">
                 <button class="text-2xl rounded-md bg-blue-500 hover:bg-blue-400 transition-all duration-200 ease-out px-6 py-2 text-white font-semibold">
                     Go to Dashboard
