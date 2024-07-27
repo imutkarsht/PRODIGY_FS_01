@@ -2,8 +2,19 @@ const user = require("../models/user")
 const bcrypt = require('bcrypt')
 const { setUser } = require("../service/auth")
 
+const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
+
 const handleUserSignup = async (req, res) => {
     const { username, email, password } = req.body;
+    
+    if (!isValidEmail(email)) {
+        return res.redirect('/signup?message=Invalid%20email%20address');
+    }
+
+    if(password.length < 4) return res.redirect('/signup?message=password%20is%20too%20short')
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await user.create({

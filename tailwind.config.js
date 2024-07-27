@@ -4,6 +4,10 @@ module.exports = {
   safelist: [
     'animate-ping',
     'text-red-500',
+    'absolute',
+    ' bottom-2',
+    ' left-4',
+    ' text-xs'
   ],
     darkMode: 'class',
       theme: {
