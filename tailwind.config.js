@@ -7,7 +7,8 @@ module.exports = {
     'absolute',
     ' bottom-2',
     ' left-4',
-    ' text-xs'
+    ' text-xs',
+    'blur-sm'
   ],
     darkMode: 'class',
       theme: {
