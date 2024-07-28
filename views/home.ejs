@@ -6,6 +6,7 @@
     <title>Note App</title>
     <link rel="stylesheet" href="./styles/output.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body class="min-h-screen font-custom flex flex-col">
     <nav class="bg-blue-500 flex relative items-center mb-[5vh] justify-between text-3xl text-white font-semibold py-2 px-3 shadow-md shadow-zinc-400">
@@ -52,17 +53,29 @@
                     <h2 class="text-xl font-bold"> <%= note.title %> </h2>
                     <div class="h-0.5 w-full bg-zinc-300 dark:bg-zinc-700 my-1"></div>
                     <p class="text-base font-semibold text-zinc-600 dark:text-zinc-100 text-wrap"><%= note.content %></p>
-                    <div class="flex items-center justify-end gap-2 pb-2 pt-2 mt-auto">
+                    <div class="flex  items-center justify-end gap-2 pb-2 pt-2 mt-auto">
                         <a href="note/edit/<%= note._id %>">
                             <button>
                                 <i class='bx bxs-edit-alt bg-blue-500 text-zinc-100 font-semibold p-1 rounded-full text-xl'></i>
                             </button>
                         </a>
-                        <a href="note/delete/<%= note._id %>">
-                            <button>
-                                <i class='bx bx-x  bg-blue-500 text-zinc-100 font-semibold p-1 rounded-full text-xl'></i>
-                            </button>
-                        </a>
+                        <div id="delPopup" class="absolute border hidden flex-col gap-4 backdrop-blur-xl shadow-md shadow-zinc-600 z-50 p-4 rounded-md text-xl w-80 top-[50%] left-2">
+                            <p class="text-xl text-zinc-950 font-semibold">are you sure you want to delete the note ?</p>
+                            <div class="flex gap-4 justify-end">
+                                <button class="text-zinc-900" id="cancelbtn">cancel</button>
+                                <a href="note/delete/<%= note._id %>"  class="text-red-500">
+                                    <button>
+                                        delete
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
+                        
+                        <button id="delBtn">
+                            <i class='bx bx-x  bg-blue-500 text-zinc-100 font-semibold p-1 rounded-full text-xl'></i>
+                        </button>
+
                         <p class="absolute bottom-2 left-4 text-xs text-zinc-400"><%= note.createdTime %></p>
                     </div>
 
@@ -76,7 +89,7 @@
 
     <script src="/scripts/toggleCreateBtn.js"></script>
     <script src="/scripts/handleHomeMessages.js"></script>
-    
+    <script src="/scripts/handleDeletePopup.js"></script>
 
 </body>
 </html>

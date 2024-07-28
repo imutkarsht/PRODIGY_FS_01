@@ -17,14 +17,19 @@ const noteSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 noteSchema.virtual('createdTime').get(function() {
-    const now = this.createdAt;
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
+    const now = new Date(this.createdAt);
+    const istOffset = 5.5 * 60 * 60 * 1000; 
+    const istTime = new Date(now.getTime() + istOffset);
+    
+    const hours = istTime.getUTCHours();
+    const minutes = istTime.getUTCMinutes();
     const ampm = hours >= 12 ? 'pm' : 'am';
     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    
     return `${formattedHours}:${formattedMinutes} ${ampm}`;
 });
+
 
 noteSchema.set('toJSON', { virtuals: true });
 noteSchema.set('toObject', { virtuals: true });
