@@ -14,7 +14,7 @@ const handleUserSignup = async (req, res) => {
         return res.redirect('/signup?message=Invalid%20email%20address');
     }
 
-    if(password.length < 4) return res.redirect('/signup?message=password%20is%20too%20short')
+    if(password.length <= 4) return res.redirect('/signup?message=password%20is%20too%20short')
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await user.create({
