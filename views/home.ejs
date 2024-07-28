@@ -46,10 +46,10 @@
         <% if (notes.length === 0) { %>
             <p class="self-center text-3xl text-zinc-400 mt-4 w-full text-center font-semibold">No Notes Found</p>
         <% } %>
-
+    
         <% if (notes.length > 0) { %>
-            <% notes.forEach(note => { %>
-                <div class="bg-zinc-100 dark:bg-zinc-800 relative dark:text-white text-zinc-950 text-wrap break-words p-4 rounded-md border-l-4 shadow-md shadow-zinc-500 dark:shadow-zinc-50 border-blue-500 flex flex-col gap-1 w-64 h-fit pb-0">
+            <% notes.forEach((note, index) => { %>
+                <div class="note bg-zinc-100 dark:bg-zinc-800 relative dark:text-white text-zinc-950 text-wrap break-words p-4 rounded-md border-l-4 shadow-md shadow-zinc-500 dark:shadow-zinc-50 border-blue-500 flex flex-col gap-1 w-64 h-fit pb-0">
                     <h2 class="text-xl font-bold"> <%= note.title %> </h2>
                     <div class="h-0.5 w-full bg-zinc-300 dark:bg-zinc-700 my-1"></div>
                     <p class="text-base font-semibold text-zinc-600 dark:text-zinc-100 text-wrap"><%= note.content %></p>
@@ -59,26 +59,20 @@
                                 <i class='bx bxs-edit-alt bg-blue-500 text-zinc-100 font-semibold p-1 rounded-full text-xl'></i>
                             </button>
                         </a>
-                        <div id="delPopup" class="absolute border hidden flex-col gap-4 backdrop-blur-xl shadow-md shadow-zinc-600 z-50 p-4 rounded-md text-xl w-80 top-[50%] left-2">
-                            <p class="text-xl text-zinc-950 font-semibold">are you sure you want to delete the note ?</p>
+                        <div class="delPopup absolute border hidden flex-col gap-4 backdrop-blur-xl shadow-md shadow-zinc-600 z-50 p-4 rounded-md text-xl w-80 top-[50%] left-2" data-index="<%= index %>">
+                            <p class="text-xl text-zinc-950 font-semibold">Are you sure you want to delete the note?</p>
                             <div class="flex gap-4 justify-end">
-                                <button class="text-zinc-900" id="cancelbtn">cancel</button>
+                                <button class="text-zinc-900 cancelbtn" data-index="<%= index %>">Cancel</button>
                                 <a href="note/delete/<%= note._id %>"  class="text-red-500">
-                                    <button>
-                                        delete
-                                    </button>
+                                    <button>Delete</button>
                                 </a>
-
                             </div>
                         </div>
-                        
-                        <button id="delBtn">
-                            <i class='bx bx-x  bg-blue-500 text-zinc-100 font-semibold p-1 rounded-full text-xl'></i>
+                        <button class="delBtn" data-index="<%= index %>">
+                            <i class='bx bx-x bg-blue-500 text-zinc-100 font-semibold p-1 rounded-full text-xl'></i>
                         </button>
-
                         <p class="absolute bottom-2 left-4 text-xs text-zinc-400"><%= note.createdTime %></p>
                     </div>
-
                 </div>
             <% }) %>
         <% } %>
