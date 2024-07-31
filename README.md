@@ -131,6 +131,26 @@ try {
 
  ```
 
+### Admin Panel to control all aspects of app (role based access)
+It contains an admin panel at /admin route which is accessible when user is logged in through admin email and password at that panel one can delete/edit/update all users and notes value. 
+
+```js 
+const checkAdmin = async (req, res, next) => {
+    const token = req.cookies.uid;
+    try {
+        const decoded = jwt.verify(token, process.env.SECRET);
+        const email = decoded.email; 
+        if(email === process.env.ADMIN_USER_NAME)
+            next();
+        else
+            res.redirect('/note')
+      } catch (err) {
+        console.error('Error decoding token:', err);
+      }
+}
+
+```
+
 ## Live Demo
 
 Check out the live demo of the Note Keep App:
