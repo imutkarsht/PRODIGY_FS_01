@@ -1,3 +1,4 @@
+require('dotenv').config()
 const user = require("../models/user")
 const bcrypt = require('bcrypt')
 const { setUser } = require("../service/auth")
@@ -36,6 +37,7 @@ const handleUserSignup = async (req, res) => {
 
 const handleUserLogin = async (req, res) => {
     const { email, password } = req.body;
+   
     try {
         const existingUser = await user.findOne({ email });
         if (!existingUser) {

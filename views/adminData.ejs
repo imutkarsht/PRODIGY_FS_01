@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/styles/output.css">
+</head>
+<body class="min-h-screen flex flex-col items-center dark:bg-zinc-900 dark:text-white bg-zinc-100 text-zinc-950 font-custom">
+
+    <nav class="bg-blue-500 flex justify-between self-start w-full text-xl md:text-3xl text-white font-semibold py-2 px-3">
+        <a href="/">Note Keep - Admin</a>
+        <ul class="flex items-center gap-4 justify-center px-2 text-base">
+            <li><a href="/admin/logout" class="px-4 py-2 bg-blue-300 hover:bg-blue-200 transition-all duration-200 ease-out text-zinc-800 rounded-md">Logout</a></li>
+        </ul>
+    </nav>
+    <h2 class="text-2xl md:text-5xl w-full text-center text-zinc-700 mt-[3vh]">All Notes</h2>
+    <div class="flex gap-4 mt-[2vh] flex-wrap bg-zinc-200 p-4 mb-[4vh]">
+        <% if (notes.length === 0) { %>
+            <h2 class="text-xl font-semibold text-zinc-500">no notes in database</h2>
+        <% } %>
+        <% notes.forEach(note => { %>
+            <div class="flex flex-col">
+                <p>
+                    <%= note.title %>
+                </p>
+                <p>
+                    <%= note.content %>
+                </p>
+                <a href="/admin/note/delete/<%= note._id %>">
+                    <button>delete</button>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="flex gap-4 flex-wrap bg-zinc-200 p-4 mb-4">
+        <% users.forEach(user => { %>
+            <div class="flex flex-col">
+                <p>
+                    <%= user.username %>
+                </p>
+                <p>
+                    <%= user.email %>
+                </p>
+                <a href="/admin/user/delete/<%= user._id %>">
+                    <button>delete</button>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

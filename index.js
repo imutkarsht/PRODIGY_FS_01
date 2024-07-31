@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser')
 const staticRoutes = require('./routes/staticRoutes')
 const noteRoutes = require('./routes/noteRoutes')
 const userRoutes = require('./routes/userRoutes')
-const { restrictToLoggedInUserOnly, checkAuth } = require('./middlewares/auth')
+const adminRoutes = require('./routes/adminRoutes')
+const { restrictToLoggedInUserOnly, checkAuth, checkAdmin } = require('./middlewares/auth')
 
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')));
@@ -19,7 +20,7 @@ app.use(cookieParser())
 app.use('/', staticRoutes)
 app.use('/user', checkAuth, userRoutes)
 app.use('/note', restrictToLoggedInUserOnly, noteRoutes)
-
+app.use('/admin', checkAdmin, adminRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server has started running`);
