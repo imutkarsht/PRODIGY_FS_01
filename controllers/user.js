@@ -49,6 +49,8 @@ const handleUserLogin = async (req, res) => {
         }
         const token = setUser(existingUser);
         res.cookie('uid', token);
+        if(email === process.env.ADMIN_USER_NAME)
+        return res.redirect('/admin')
         return res.redirect('/note?message=logged%20in%20successfully');
     } catch (error) {
         console.error(error);
